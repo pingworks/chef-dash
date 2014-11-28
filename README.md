@@ -1,33 +1,16 @@
 # chef-dash-cookbook
 
-TODO: Enter the cookbook description here.
-
 ## Supported Platforms
 
-TODO: List your supported platforms.
+Debian 7.x (wheezy)
 
 ## Attributes
-
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['chef-dash']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
 
 ## Usage
 
 ### chef-dash::default
 
-Include `chef-dash` in your node's `run_list`:
+Include `chef-dash` in your node's `run_list` to install the dashboard wirh 'production' settings:
 
 ```json
 {
@@ -38,5 +21,9 @@ Include `chef-dash` in your node's `run_list`:
 ```
 
 ## License and Authors
+Licensed under
+Apache v2.0 License
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+Author:: Christoph Lukas (<lukas@pingworks.de>)
+Author:: Alexander Birk (<birk@pingworks.de>)
+
