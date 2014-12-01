@@ -19,4 +19,5 @@ suites:
     run_list:
       - recipe[chef-dash::dash-prod]
       - recipe[chef-dash::repo]
+      - recipe[chef-dash::dash-scripts]
     attributes: {}

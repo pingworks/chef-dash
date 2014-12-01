@@ -8,5 +8,8 @@ version          '0.1.0'
 
 supports 'debian'
 
+# we need that so that the system will do an "apt-get update" upfront
+depends 'apt'
+
 depends 'apache2'
 depends 'php'
