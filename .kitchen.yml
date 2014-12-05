@@ -14,13 +14,12 @@ platforms:
         network:
         - ["forwarded_port", { guest: 80, host: 8080 }]
 
-#suites:
-#  - name: dash-prod_and_repo
-#    run_list:
-#      - recipe[chef-dash::dash-prod]
-#      - recipe[chef-dash::repo]
-#    attributes: {}
 suites:
+  - name: default
+    run_list:
+      - recipe[chef-dash::dash-prod]
+      - recipe[chef-dash::repo]
+    attributes: {}
   - name: dash-scripts
     run_list:
       - recipe[chef-dash::dash-scripts]
