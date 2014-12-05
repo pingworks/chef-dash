@@ -63,7 +63,22 @@ bash 'install_dash' do
   rm -rf bundle
   mkdir bundle
   tar xfz full-bundle_LATEST.tar.gz -C bundle
-  dpkg -i bundle/artifacts/dash-backend_*.deb
-  dpkg -i bundle/artifacts/dash-frontend_*.deb
+  dpkg --force-confnew -i bundle/artifacts/dash-backend_*.deb
+  dpkg --force-confnew -i bundle/artifacts/dash-frontend_*.deb
   EOH
 end
+
+template "/etc/dash-backend/application.ini" do
+  source 'application_ini.erb'
+  owner "root"
+  group "root"
+  mode '644'
+end
+
+template "/etc/dash-frontend/config.js" do
+  source 'config_js.erb'
+  owner "root"
+  group "root"
+  mode '644'
+end
+
