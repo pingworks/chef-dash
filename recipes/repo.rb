@@ -33,7 +33,7 @@ end
 user node['chef-dash']['repo']['owner'] do
   comment 'Repo User'
   shell '/bin/bash'
-  home node['chef-dash']['repo']['dir']
+  home node['chef-dash']['repo']['ownerhome']
 end
 
 directory node['chef-dash']['repo']['dir'] do

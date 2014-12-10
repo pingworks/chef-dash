@@ -8,6 +8,7 @@ default['chef-dash']['scripts']['config_always_update'] = true
 
 # Repo Config
 default['chef-dash']['repo']['dir'] = '/data/repo'
+default['chef-dash']['repo']['ownerhome'] = '/home/repo'
 default['chef-dash']['repo']['owner'] = 'repo'
 default['chef-dash']['repo']['group'] = 'repo'
 
