@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+include_recipe 'apt'
+
 %w(vim less git wget zip unzip).each do |p|
   package p do
     action :install
