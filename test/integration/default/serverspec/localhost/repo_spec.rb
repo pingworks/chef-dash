@@ -6,7 +6,7 @@ describe user('repo') do
 end
 
 describe user('repo') do
-  it { should have_home_directory '/data/repo' }
+  it { should have_home_directory '/home/repo' }
 end
 
 describe user('repo') do
