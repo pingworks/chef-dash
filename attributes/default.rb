@@ -1,3 +1,6 @@
+# Jenkins URL
+default['chef-dash']['jenkins']['url'] = "/jenkins"
+
 # Dash Scripts Sources
 default['chef-dash']['scripts']['gitrepo']['url'] = 'https://github.com/pingworks/dash.git'
 
@@ -28,7 +31,7 @@ default['chef-dash']['frontend']['toolbar']['left']['title'] = 'Dashboard'
 default['chef-dash']['frontend']['toolbar']['links'] = "{
                 id: 'JenkinsButton',
                 text: 'Jenkins',
-                url: '/jenkins/'
+                url: '#{node['chef-dash']['jenkins']['url']}/'
             },
             {
                 id: 'RepoButton',
@@ -102,15 +105,15 @@ default['chef-dash']['frontend']['bundlegrid']['flex']['deployment'] = '1'
 default['chef-dash']['frontend']['bundlegrid']['flex']['triggerJenkinsJob'] = '1'
 default['chef-dash']['frontend']['bundlegrid']['flex']['comment'] = '0'
 
-default['chef-dash']['frontend']['jobresult']['text'] = '<div style="white-space: nowrap;"><img src="{6}" alt="{2}" class="{7}">&nbsp;<a href="/jenkins/{1}" target="_blank">{0}</a>: Tests: {3}, skipped: {4}, failed: {5}</div>'
+default['chef-dash']['frontend']['jobresult']['text'] = "<div style=\"white-space: nowrap;\"><img src=\"{6}\" alt=\"{2}\" class=\"{7}\">&nbsp;<a href=\"#{node['chef-dash']['jenkins']['url']}/{1}\" target=\"_blank\">{0}</a>: Tests: {3}, skipped: {4}, failed: {5}</div>"
 default['chef-dash']['frontend']['jobresult']['title'] = '{1} stage Jobs for Bundle {2}'
 
-default['chef-dash']['frontend']['build']['triggerRestartUrl'] = '/jenkins/job/Deployment/buildWithParameters?token=Aezei3oph9xu'
+default['chef-dash']['frontend']['build']['triggerRestartUrl'] = "#{node['chef-dash']['jenkins']['url']}/job/Deployment/buildWithParameters?token=Aezei3oph9xu"
 
-default['chef-dash']['frontend']['deployment']['triggerUrl'] = '/jenkins/job/Deployment/buildWithParameters?token=Omi7foh4gu7d'
-default['chef-dash']['frontend']['deployment']['showUrl'] = '/jenkins/job/Deployment/'
+default['chef-dash']['frontend']['deployment']['triggerUrl'] = "#{node['chef-dash']['jenkins']['url']}/job/Deployment/buildWithParameters?token=Omi7foh4gu7d"
+default['chef-dash']['frontend']['deployment']['showUrl'] = "#{node['chef-dash']['jenkins']['url']}/job/Deployment/"
 default['chef-dash']['frontend']['deployment']['feature']['content']['enabled'] = 'false'
 default['chef-dash']['frontend']['deployment']['feature']['dbreset']['enabled'] = 'false'
 
-default['chef-dash']['frontend']['triggerJenkinsJob']['triggerUrl'] = '/jenkins/job/DeploymentProd/buildWithParameters?token=Omi7foh4gu7d'
-default['chef-dash']['frontend']['triggerJenkinsJob']['showUrl'] = '/jenkins/job/DeploymentProd/'
+default['chef-dash']['frontend']['triggerJenkinsJob']['triggerUrl'] = "#{node['chef-dash']['jenkins']['url']}/job/DeploymentProd/buildWithParameters?token=Omi7foh4gu7d"
+default['chef-dash']['frontend']['triggerJenkinsJob']['showUrl'] = "#{node['chef-dash']['jenkins']['url']}/job/DeploymentProd/"
