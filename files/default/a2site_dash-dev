@@ -1,0 +1,17 @@
+<VirtualHost *:80>
+  ServerName dash-dev
+
+  DocumentRoot /opt/app/dash/frontend
+  SetEnv APPLICATION_ENV "development"
+
+  <Directory /opt/app/dash/frontend>
+    RewriteEngine On
+    RewriteBase /
+    RewriteCond %{REQUEST_FILENAME} -s [OR]
+    RewriteCond %{REQUEST_FILENAME} -l [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^.*$ - [NC,L]
+    RewriteRule ^.*$ rest.php [NC,L]
+  </Directory>
+  Alias /rest.php /opt/app/dash/backend/public/rest.php
+</VirtualHost>

@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: chef-dash
-# Recipe:: develop
+# Recipe:: dash-dev
 #
 # Copyright 2014 pingworks - Alexander Birk und Christoph Lukas
 #
@@ -16,9 +16,49 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-%w(default-jre ant ant-contrib ruby rubygems ruby-compass xvfb iceweasel phpunit phpunit-selenium).each do |p|
+
+include_recipe 'apt'
+
+%w(vim less git wget zip unzip default-jre ant ant-contrib ruby rubygems ruby-compass xvfb iceweasel phpunit phpunit-selenium).each do |p|
   package p do
     action :install
   end
 end
 
+cookbook_file 'network_interfaces' do
+  path '/etc/network/interfaces'
+  owner 'root'
+  group 'root'
+  mode '644'
+end
+
+execute 'ifup_eth1' do
+  command '/sbin/ifup eth1'
+end
+
+include_recipe 'chef-dash::dash-dev-user'
+
+include_recipe 'chef-dash::dash-dev-src'
+
+include_recipe 'chef-dash::dash-dev-apache'
+
+include_recipe 'chef-dash::dash-dev-testdata'
+
+include_recipe 'chef-dash::dash-dev-buildtools'
+
+include_recipe 'chef-dash::dash-dev-initial-frontend-build'
+
+srcDir = "#{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcDir']}"
+# Configure repo and datadir for dev
+cookbook_file 'application_ini' do
+  path "#{srcDir}/backend/application/configs/application.ini"
+  owner node['chef-dash']['dev']['user']
+  group node['chef-dash']['dev']['group']
+  mode '644'
+end
+
+# add dash-test entry to /etc/hosts
+bash 'add_dash-test_to_hosts_file' do
+  code "echo '127.0.0.1 dash-test selenium' >> /etc/hosts"
+  not_if "grep '127.0.0.1 dash-test' /etc/hosts"
+end
