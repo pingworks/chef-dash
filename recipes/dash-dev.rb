@@ -39,6 +39,7 @@ end
 include_recipe 'chef-dash::dash-dev-user'
 
 include_recipe 'chef-dash::dash-dev-src'
+include_recipe 'chef-dash::dash-dev-src-outside'
 
 include_recipe 'chef-dash::dash-dev-apache'
 
