@@ -126,6 +126,7 @@ default['chef-dash']['dev']['seleniumUrl'] = "http://selenium-release.storage.go
 default['chef-dash']['dev']['srcBaseDir'] = "/opt/app"
 default['chef-dash']['dev']['srcDir'] = "dash"
 default['chef-dash']['dev']['srcRepoUrl'] = "https://github.com/pingworks/dash.git"
+default['chef-dash']['dev']['pgkRepoUrl'] = "http://repo.pingworks.net"
 default['chef-dash']['dev']['user'] = "vagrant"
 default['chef-dash']['dev']['group'] = "vagrant"
 default['chef-dash']['dev']['userHome'] = "/home/vagrant"

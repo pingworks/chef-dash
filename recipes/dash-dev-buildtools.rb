@@ -25,7 +25,8 @@ end
 
 # Sencha Cmd
 remote_file "/var/tmp/SenchaCmd-#{node['chef-dash']['dev']['senchacmdVersion']}-linux-x64.run.zip" do
-  source "http://cdn.sencha.com/cmd/#{node['chef-dash']['dev']['senchacmdVersion']}/SenchaCmd-#{node['chef-dash']['dev']['senchacmdVersion']}-linux-x64.run.zip"
+  #source "http://cdn.sencha.com/cmd/#{node['chef-dash']['dev']['senchacmdVersion']}/SenchaCmd-#{node['chef-dash']['dev']['senchacmdVersion']}-linux-x64.run.zip"
+  source "#{node['chef-dash']['dev']['pgkRepoUrl']}/SenchaCmd-#{node['chef-dash']['dev']['senchacmdVersion']}-linux-x64.run.zip"
   action :create_if_missing
   not_if do ::File.directory?("/opt/Sencha/Cmd/#{node['chef-dash']['dev']['senchacmdVersion']}") end
 end
