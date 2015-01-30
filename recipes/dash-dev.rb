@@ -19,7 +19,7 @@
 
 include_recipe 'apt'
 
-%w(vim less git wget zip unzip default-jre ant ant-contrib ruby rubygems ruby-compass xvfb iceweasel phpunit phpunit-selenium).each do |p|
+%w(vim less git wget zip unzip default-jre ant ant-contrib ruby rubygems ruby-compass xvfb iceweasel phpunit phpunit-selenium x11vnc).each do |p|
   package p do
     action :install
   end
