@@ -49,15 +49,6 @@ include_recipe 'chef-dash::dash-dev-buildtools'
 
 include_recipe 'chef-dash::dash-dev-initial-frontend-build'
 
-srcDir = "#{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcDir']}"
-# Configure repo and datadir for dev
-cookbook_file 'application_ini' do
-  path "#{srcDir}/backend/application/configs/application.ini"
-  owner node['chef-dash']['dev']['user']
-  group node['chef-dash']['dev']['group']
-  mode '644'
-end
-
 # add dash-test entry to /etc/hosts
 bash 'add_dash-test_to_hosts_file' do
   code "echo '127.0.0.1 dash-test selenium' >> /etc/hosts"
