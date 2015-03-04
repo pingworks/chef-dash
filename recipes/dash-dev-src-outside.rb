@@ -27,5 +27,5 @@ bash "link dash source" do
   mv #{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcDir']} #{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcDir']}.orig
   ln -s /vagrant_app_dash #{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcDir']}
   EOL
-  only_if "-f vagrant_app_dash/Vagrantfile"
+  only_if "[ -f vagrant_app_dash/Vagrantfile ]"
 end
