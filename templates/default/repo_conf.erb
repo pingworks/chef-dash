@@ -1,0 +1,31 @@
+#!/bin/bash
+
+REPO="<%= node['chef-dash']['scripts']['impl'] %>"
+SSHLOGIN="<%= node['chef-dash']['scripts']['sshlogin'] %>"
+SSHCMD="ssh ${SSHLOGIN}"
+SCPCMD="scp"
+
+ONLYWARNONERROR=<%= node['chef-dash']['scripts']['warnonerror'] %>
+
+REPOBASE="<%= node['chef-dash']['repodir'] %>"
+PNAME_PATTERN="<%= node['chef-dash']['regex']['pname'] %>"
+# pname-bnum  pname.bnum.sha1  bnum.sha1  branchnr.sha1.bnum
+BUNDLE_PATTERN="<%= node['chef-dash']['regex']['bundle'] %>"
+JENKINS_WORKSPACE='.'
+JENKINS_PROPERTYFILE_DIR="${JENKINS_WORKSPACE}/../build.properties"
+REPOUSER="www-data"
+BRANCH_PATTERN="<%= node['chef-dash']['regex']['branch'] %>"
+BRANCHNR_FALLBACK=99
+
+STAGE_PATTERN="<%= node['chef-dash']['regex']['stage'] %>"
+STATUS_PATTERN="<%= node['chef-dash']['regex']['status'] %>"
+
+ENV_PATTERN="<%= node['chef-dash']['regex']['env'] %>"
+ENV_USER=root
+ENV_TMP="/var/tmp"
+
+PKGMGR="dpkg"
+PKGMGR_INSTALLOPTS="-i"
+
+ALWAYS_UPDATE_READMEHTML=1
+ALWAYS_DELETE_ARTIFACTS=0

@@ -5,9 +5,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -80,8 +80,9 @@ Dash.config = {
         colwidth: {
             timestamp: <%= node['chef-dash']['frontend']['bundlegrid']['colwidth']['timestamp'] %>,
             committer: <%= node['chef-dash']['frontend']['bundlegrid']['colwidth']['committer'] %>,
-            revision: <%= node['chef-dash']['frontend']['bundlegrid']['colwidth']['revision'] %>,
             pname: <%= node['chef-dash']['frontend']['bundlegrid']['colwidth']['pname'] %>,
+            branch: <%= node['chef-dash']['frontend']['bundlegrid']['colwidth']['branch'] %>,
+            revision: <%= node['chef-dash']['frontend']['bundlegrid']['colwidth']['revision'] %>,
             repository: <%= node['chef-dash']['frontend']['bundlegrid']['colwidth']['repository'] %>,
             bundle: <%= node['chef-dash']['frontend']['bundlegrid']['colwidth']['bundle'] %>,
             stage1: <%= node['chef-dash']['frontend']['bundlegrid']['colwidth']['stage1'] %>,
@@ -97,8 +98,9 @@ Dash.config = {
         label: {
             timestamp: '<%= node['chef-dash']['frontend']['bundlegrid']['label']['timestamp'] %>',
             committer: '<%= node['chef-dash']['frontend']['bundlegrid']['label']['committer'] %>',
-            revision: '<%= node['chef-dash']['frontend']['bundlegrid']['label']['revision'] %>',
             pname: '<%= node['chef-dash']['frontend']['bundlegrid']['label']['pname'] %>',
+            branch: '<%= node['chef-dash']['frontend']['bundlegrid']['label']['branch'] %>',
+            revision: '<%= node['chef-dash']['frontend']['bundlegrid']['label']['revision'] %>',
             repository: '<%= node['chef-dash']['frontend']['bundlegrid']['label']['repository'] %>',
             bundle: '<%= node['chef-dash']['frontend']['bundlegrid']['label']['bundle'] %>',
             stage1: '<%= node['chef-dash']['frontend']['bundlegrid']['label']['stage1'] %>',
@@ -114,8 +116,9 @@ Dash.config = {
         hidden: {
             timestamp: <%= node['chef-dash']['frontend']['bundlegrid']['hidden']['timestamp'] %>,
             committer: <%= node['chef-dash']['frontend']['bundlegrid']['hidden']['committer'] %>,
+            pname: <%= node['chef-dash']['frontend']['bundlegrid']['hidden']['pname'] %>,
+            branch: <%= node['chef-dash']['frontend']['bundlegrid']['hidden']['branch'] %>,
             revision: <%= node['chef-dash']['frontend']['bundlegrid']['hidden']['revision'] %>,
-            pname: <%= node['chef-dash']['frontend']['bundlegrid']['hidden']['revision'] %>,
             repository: <%= node['chef-dash']['frontend']['bundlegrid']['hidden']['repository'] %>,
             bundle: <%= node['chef-dash']['frontend']['bundlegrid']['hidden']['bundle'] %>,
             stage1: <%= node['chef-dash']['frontend']['bundlegrid']['hidden']['stage1'] %>,

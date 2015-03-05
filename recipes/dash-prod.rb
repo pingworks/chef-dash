@@ -55,8 +55,14 @@ end
 
 include_recipe 'chef-dash::dash-debian-repo'
 
-package 'dash-backend'
-package 'dash-frontend'
+package 'dash-backend' do
+  version node['chef-dash']['package']['version']
+  action :install
+end
+package 'dash-frontend' do
+  version node['chef-dash']['package']['version']
+  action :install
+end
 
 template "/etc/dash-backend/application.ini" do
   source 'application_ini.erb'

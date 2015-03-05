@@ -20,7 +20,10 @@
 include_recipe 'apt'
 include_recipe 'chef-dash::dash-debian-repo'
 
-package 'dash-scripts'
+package 'dash-scripts' do
+  version node['chef-dash']['package']['version']
+  action :install
+end
 
 template "/etc/dash-scripts/repo.conf" do
   source 'repo_conf.erb'
