@@ -36,11 +36,9 @@ user node['chef-dash']['repo']['owner'] do
   home node['chef-dash']['repo']['ownerhome']
 end
 
-directory node['chef-dash']['repo']['dir'] do
+directory node['chef-dash']['repodir'] do
   owner node['chef-dash']['repo']['owner']
   group node['chef-dash']['repo']['group']
   mode '0755'
   recursive true
 end
-
-

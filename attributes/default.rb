@@ -5,33 +5,35 @@ default['chef-dash']['debrepo']['comp'] = ['main']
 default['chef-dash']['debrepo']['keyserver'] = 'keyserver.ubuntu.com'
 default['chef-dash']['debrepo']['key'] = 'C18F5E6F'
 
+# Regex
+default['chef-dash']['regex']['pname'] = '^[a-zA-Z0-9]+\$'
+default['chef-dash']['regex']['bundle'] = '^([a-zA-Z0-9]+-[0-9]+|[a-zA-Z]+\.[0-9]+\.[0-9a-f]+|[0-9]+\.[0-9a-f]+|[0-9]+\.[a-f0-9]+\.[0-9]+)\$'
+default['chef-dash']['regex']['branch'] = '^[0-9a-zA-Z-_]+\$'
+default['chef-dash']['regex']['stage'] = '^[0-9]\$'
+default['chef-dash']['regex']['status'] = '^[0-9]\$'
+default['chef-dash']['regex']['env'] = '^testenv[0-9][0-9]\$'
+default['chef-dash']['regex']['content'] = '^(latest|[0-9]+)\$'
+
+# Paths
+default['chef-dash']['repodir'] = '/data/repo'
+default['chef-dash']['datadir'] = '/data/envs'
+default['chef-dash']['contentdir'] = '/data/content'
+
 # Jenkins URL
 default['chef-dash']['jenkins']['url'] = "/jenkins"
 
-# Dash Scripts Sources
-default['chef-dash']['scripts']['gitrepo']['url'] = 'https://github.com/pingworks/dash.git'
-
-default['chef-dash']['scripts']['install_path'] = '/opt/dash/scripts'
-default['chef-dash']['scripts']['config_path'] = '/etc/dash-scripts'
-
-default['chef-dash']['scripts']['config_always_update'] = true
+# Scripts
+default['chef-dash']['scripts']['impl'] = 'localfs'
+default['chef-dash']['scripts']['sshlogin'] = 'jenkins@dash.int'
+default['chef-dash']['scripts']['warnonerror'] = 0
 
 # Repo Config
-default['chef-dash']['repo']['dir'] = '/data/repo'
 default['chef-dash']['repo']['ownerhome'] = '/home/repo'
 default['chef-dash']['repo']['owner'] = 'repo'
 default['chef-dash']['repo']['group'] = 'repo'
 
 # Backend Config
-default['chef-dash']['backend']['repodir'] = '/data/repo'
-default['chef-dash']['backend']['datadir'] = '/data/envs'
-default['chef-dash']['backend']['contentdir'] = '/data/content'
-default['chef-dash']['backend']['paramregex']['bundle'] = '/^[0-9]+$/'
-default['chef-dash']['backend']['paramregex']['branch'] = '/^[0-9a-zA-Z-_]+$/'
-default['chef-dash']['backend']['paramregex']['stage'] = '/^[0-9]$/'
-default['chef-dash']['backend']['paramregex']['envid'] = '/^testenv[0-9][0-9]$/'
-default['chef-dash']['backend']['paramregex']['contentversion'] = '/^(latest|[0-9]+)$/'
-default['chef-dash']['backend']['defaultbranch'] = 'develop'
+default['chef-dash']['backend']['defaultbranch'] = 'ALL'
 
 # Frontend Config
 default['chef-dash']['frontend']['toolbar']['left']['title'] = 'Dashboard'

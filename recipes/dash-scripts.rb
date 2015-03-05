@@ -17,44 +17,14 @@
 # limitations under the License.
 #
 
-include_recipe 'git'
+include_recipe 'apt'
+include_recipe 'chef-dash::dash-debian-repo'
 
-git '/tmp/dash' do
-  repository node['chef-dash']['scripts']['gitrepo']['url']
-  reference 'master'
-  action :sync
+package 'dash-scripts'
+
+template "/etc/dash-scripts/repo.conf" do
+  source 'repo_conf.erb'
+  owner "root"
+  group "root"
+  mode '644'
 end
-
-directory node['chef-dash']['scripts']['install_path'] do
-  recursive true
-  action :create
-end
-
-package 'rsync'
-
-bash 'rsync scripts checkout' do
-  code <<-EOL
-    rsync -avx --delete --exclude=configs /tmp/dash/scripts/ #{node['chef-dash']['scripts']['install_path']}/
-  EOL
-
-end
-
-bash 'mkdir & sync config folder' do
-  code <<-EOL
-    mkdir #{node['chef-dash']['scripts']['config_path']}
-    rsync -avx /tmp/dash/scripts/configs/ #{node['chef-dash']['scripts']['config_path']}/
-    ln -s #{node['chef-dash']['scripts']['config_path']} #{node['chef-dash']['scripts']['install_path']}/configs
-  EOL
-  not_if "test -d #{node['chef-dash']['scripts']['config_path']}"
-end
-
-bash 'always update config' do
-  code <<-EOL
-    rsync -avx --delete /tmp/dash/scripts/configs/ #{node['chef-dash']['scripts']['config_path']}/
-  EOL
-  only_if { node['chef-dash']['scripts']['config_always_update'] }
-end
-
-
-
-

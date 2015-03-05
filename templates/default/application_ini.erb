@@ -8,14 +8,14 @@ appnamespace = "Application"
 resources.frontController.controllerDirectory = APPLICATION_PATH "/controllers"
 resources.frontController.params.displayExceptions = 0
 resources.router.routes.rest.type = Zend_Rest_Route
-repodir = <%= node['chef-dash']['backend']['repodir'] %>
-datadir = <%= node['chef-dash']['backend']['datadir'] %>
-contentdir = <%= node['chef-dash']['backend']['contentdir'] %>
-paramregex.bundle = "<%= node['chef-dash']['backend']['paramregex']['bundle'] %>"
-paramregex.branch = "<%= node['chef-dash']['backend']['paramregex']['branch'] %>"
-paramregex.stage = "<%= node['chef-dash']['backend']['paramregex']['stage'] %>"
-paramregex.envid = "<%= node['chef-dash']['backend']['paramregex']['envid'] %>"
-paramregex.contentversion = "<%= node['chef-dash']['backend']['paramregex']['contentversion'] %>"
+repodir = <%= node['chef-dash']['repodir'] %>
+datadir = <%= node['chef-dash']['datadir'] %>
+contentdir = <%= node['chef-dash']['contentdir'] %>
+paramregex.bundle = "/<%= node['chef-dash']['regex']['bundle'] %>/"
+paramregex.branch = "/<%= node['chef-dash']['regex']['branch'] %>/"
+paramregex.stage = "/<%= node['chef-dash']['regex']['stage'] %>/"
+paramregex.envid = "/<%= node['chef-dash']['regex']['env'] %>/"
+paramregex.contentversion = "/<%= node['chef-dash']['regex']['content'] %>/"
 defaultbranch = <%= node['chef-dash']['backend']['defaultbranch'] %>
 environment.addUsernameFromEnv = USERNAME
 
