@@ -1,3 +1,10 @@
+# Debian Package Repo
+default['chef-dash']['debrepo']['url'] = 'https://dash.pingworks.net/debian'
+default['chef-dash']['debrepo']['dist'] = 'squeeze'
+default['chef-dash']['debrepo']['comp'] = ['main']
+default['chef-dash']['debrepo']['keyserver'] = 'keyserver.ubuntu.com'
+default['chef-dash']['debrepo']['key'] = 'C18F5E6F'
+
 # Jenkins URL
 default['chef-dash']['jenkins']['url'] = "/jenkins"
 

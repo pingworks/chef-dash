@@ -53,22 +53,10 @@ bash 'apache2_restart' do
   code 'service apache2 restart'
 end
 
-remote_file "/var/tmp/full-bundle_LATEST.tar.gz" do
-  source "https://dash.pingworks.net/repo/master/full-bundle_LATEST.tar.gz"
-  action :create_if_missing
-end
+include_recipe 'chef-dash::dash-debian-repo'
 
-bash 'install_dash' do
-  cwd '/var/tmp'
-  code <<-EOH
-  dpkg -l dash-frontend > /dev/null && exit 0
-  rm -rf bundle
-  mkdir bundle
-  tar xfz full-bundle_LATEST.tar.gz -C bundle
-  dpkg --force-confnew -i bundle/artifacts/dash-backend_*.deb
-  dpkg --force-confnew -i bundle/artifacts/dash-frontend_*.deb
-  EOH
-end
+package 'dash-backend'
+package 'dash-frontend'
 
 template "/etc/dash-backend/application.ini" do
   source 'application_ini.erb'
@@ -83,4 +71,3 @@ template "/etc/dash-frontend/config.js" do
   group "root"
   mode '644'
 end
-
