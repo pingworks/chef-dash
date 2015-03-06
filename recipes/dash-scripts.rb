@@ -31,3 +31,10 @@ template "/etc/dash-scripts/repo.conf" do
   group "root"
   mode '644'
 end
+
+template "/etc/dash-scripts/bundlename.sh" do
+  source 'bundlename_sh.erb'
+  owner "root"
+  group "root"
+  mode '755'
+end

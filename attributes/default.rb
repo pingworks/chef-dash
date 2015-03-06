@@ -28,6 +28,7 @@ default['chef-dash']['jenkins']['url'] = "/jenkins"
 default['chef-dash']['scripts']['impl'] = 'localfs'
 default['chef-dash']['scripts']['sshlogin'] = 'jenkins@dash.int'
 default['chef-dash']['scripts']['warnonerror'] = 0
+default['chef-dash']['scripts']['bundlename'] = '${PNAME}.${BUILD_ID}.${REV}'
 
 # Repo Config
 default['chef-dash']['repo']['ownerhome'] = '/home/repo'
