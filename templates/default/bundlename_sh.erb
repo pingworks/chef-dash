@@ -6,5 +6,5 @@ function getBundleName() {
   local REV=$3
   local BUILD_ID=$4
 
-  BUNDLE="$PNAME.$BUILD_ID.$REV"
+  BUNDLE="<%= node['chef-dash']['scripts']['bundlename'] %>"
 }

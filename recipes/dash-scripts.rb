@@ -36,5 +36,5 @@ template "/etc/dash-scripts/bundlename.sh" do
   source 'bundlename_sh.erb'
   owner "root"
   group "root"
-  mode '755'
+  mode '644'
 end
