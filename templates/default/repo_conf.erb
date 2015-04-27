@@ -7,6 +7,8 @@ SCPCMD="scp"
 
 ONLYWARNONERROR=<%= node['chef-dash']['scripts']['warnonerror'] %>
 
+LOCK_TIMEOUT=<%= node['chef-dash']['scripts']['locktimeout'] %>
+
 REPOBASE="<%= node['chef-dash']['repodir'] %>"
 PNAME_PATTERN="<%= node['chef-dash']['regex']['pname'] %>"
 # pname-bnum  pname.bnum.sha1  bnum.sha1  branchnr.sha1.bnum
