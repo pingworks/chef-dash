@@ -18,6 +18,8 @@ paramregex.envid = "/<%= node['chef-dash']['regex']['env'] %>/"
 paramregex.contentversion = "/<%= node['chef-dash']['regex']['content'] %>/"
 defaultbranch = <%= node['chef-dash']['backend']['defaultbranch'] %>
 environment.addUsernameFromEnv = USERNAME
+// please remember to change the corresponding value in config.js
+pipelinestages = <%= node['chef-dash']['pipelinestages'] %>
 
 [staging : production]
 
