@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: chef-dash
-# Recipe:: dash-scripts
+# Recipe:: dash-scripts-install-pkg
 #
 # Copyright 2014 pingworks - Alexander Birk und Christoph Lukas
 #
@@ -17,5 +17,10 @@
 # limitations under the License.
 #
 
-include_recipe 'chef-dash::dash-scripts-install-pkg'
-include_recipe 'chef-dash::dash-scripts-install-tpl'
+include_recipe 'apt'
+include_recipe 'chef-dash::dash-debian-repo'
+
+package 'dash-scripts' do
+  version node['chef-dash']['package']['version']
+  action :install
+end

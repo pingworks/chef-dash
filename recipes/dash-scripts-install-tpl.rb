@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: chef-dash
-# Recipe:: dash-scripts
+# Recipe:: dash-scripts-install-tpl
 #
 # Copyright 2014 pingworks - Alexander Birk und Christoph Lukas
 #
@@ -17,5 +17,16 @@
 # limitations under the License.
 #
 
-include_recipe 'chef-dash::dash-scripts-install-pkg'
-include_recipe 'chef-dash::dash-scripts-install-tpl'
+template "/etc/dash-scripts/repo.conf" do
+  source 'repo_conf.erb'
+  owner "root"
+  group "root"
+  mode '644'
+end
+
+template "/etc/dash-scripts/bundlename.sh" do
+  source 'bundlename_sh.erb'
+  owner "root"
+  group "root"
+  mode '644'
+end
