@@ -1,4 +1,5 @@
-default['chef-dash']['package']['version'] = '382+gitf2f8405'
+default['chef-dash']['package']['version'] = '435+gitca47358'
+default['chef-dash']['package']['install_method'] = 'apt'
 
 default['chef-dash']['pipelinestages'] = 3
 

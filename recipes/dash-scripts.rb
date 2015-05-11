@@ -17,5 +17,5 @@
 # limitations under the License.
 #
 
-include_recipe 'chef-dash::dash-scripts-install-pkg'
+include_recipe "chef-dash::dash-scripts-install-#{node['chef-dash']['package']['install_method']}"
 include_recipe 'chef-dash::dash-scripts-install-tpl'
