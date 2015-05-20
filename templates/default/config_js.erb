@@ -25,9 +25,9 @@ Dash.config = {
             {
                 id: 'Logo',
                 xtype: 'component',
-                width: 48,
-                height: 38,
-                html: '<img src="resources/img/icons/Dashboard-green.png" />'
+                width: <%= node['chef-dash']['frontend']['toolbar']['left']['logowidth'] %>,
+                height: <%= node['chef-dash']['frontend']['toolbar']['left']['logoheight'] %>,
+                html: '<img width="<%= node['chef-dash']['frontend']['toolbar']['left']['logowidth'] %>" height="<%= node['chef-dash']['frontend']['toolbar']['left']['logoheight'] %>" src="<%= node['chef-dash']['frontend']['toolbar']['left']['logourl'] %>" />'
             },
             {
                 xtype: 'component',
@@ -68,17 +68,11 @@ Dash.config = {
         reload: <%= node['chef-dash']['frontend']['bundlegrid']['reload'] %>, // 5 min
         deployment: {
             enabled: <%= node['chef-dash']['frontend']['bundlegrid']['deployment']['enabled'] %>,
-            required: {
-                field: 'stage1',
-                value: 3
-            }
+            required: <%= node['chef-dash']['frontend']['bundlegrid']['deployment']['required'] %>
         },
         triggerJenkinsJob: {
             enabled: <%= node['chef-dash']['frontend']['bundlegrid']['triggerJenkinsJob']['enabled'] %>,
-            required: {
-                field: 'stage1',
-                value: 3
-            }
+            required: <%= node['chef-dash']['frontend']['bundlegrid']['triggerJenkinsJob']['required'] %>
         },
         colwidth: {
             timestamp: <%= node['chef-dash']['frontend']['bundlegrid']['colwidth']['timestamp'] %>,
@@ -303,30 +297,15 @@ Dash.config = {
     triggerJenkinsJob: {
         triggerUrl: '<%= node['chef-dash']['frontend']['triggerJenkinsJob']['triggerUrl'] %>',
         showUrl: '<%= node['chef-dash']['frontend']['triggerJenkinsJob']['showUrl'] %>',
-        title: 'Deployment to production',
+        title: '<%= node['chef-dash']['frontend']['triggerJenkinsJob']['title'] %>',
         label: {
-            cancel: 'Cancel',
-            run: 'Go go go !!'
+            cancel: '<%= node['chef-dash']['frontend']['triggerJenkinsJob']['label']['cancel'] %>',
+            run: '<%= node['chef-dash']['frontend']['triggerJenkinsJob']['label']['run'] %>'
         },
-        text: 'Do you really want to deploy to production?',
-        inputFields: [/*{
-         type: 'checkbox',
-         label: 'Module 1: {1}',
-         labelBundleKey: 'foo',
-         name: 'module1',
-         value: 'module1'
-         }, {
-         type: 'checkbox',
-         label: 'Module 2: {1}',
-         labelBundleKey: 'bar',
-         name: 'module2',
-         value: 'module2'
-         }*/],
+        text: '<%= node['chef-dash']['frontend']['triggerJenkinsJob']['text'] %>',
+        inputFields: <%= node['chef-dash']['frontend']['triggerJenkinsJob']['inputFields'] %>,
         params: {
-            bundle: {
-                name: 'branch_bundle',
-                value: '{0}:{1}'
-            },
+            bundle: <%= node['chef-dash']['frontend']['triggerJenkinsJob']['params']['bundle'] %>,
             formValues: {
                 name: 'formValues'
             }

@@ -43,6 +43,9 @@ default['chef-dash']['repo']['group'] = 'repo'
 default['chef-dash']['backend']['defaultbranch'] = 'ALL'
 
 # Frontend Config
+default['chef-dash']['frontend']['toolbar']['left']['logourl'] = 'resources/img/icons/Dashboard-green.png'
+default['chef-dash']['frontend']['toolbar']['left']['logowidth'] = '48'
+default['chef-dash']['frontend']['toolbar']['left']['logoheight'] = '38'
 default['chef-dash']['frontend']['toolbar']['left']['title'] = 'Dashboard'
 default['chef-dash']['frontend']['toolbar']['links'] = "{
                 id: 'JenkinsButton',
@@ -70,7 +73,15 @@ default['chef-dash']['frontend']['bundlegrid']['vcslink'] = '<a href="https://gi
 default['chef-dash']['frontend']['bundlegrid']['vcsrepolink'] = '<a href="https://github.com/pingworks/dash/" target="_blank" style="color: black">{0}</a>'
 default['chef-dash']['frontend']['bundlegrid']['reload'] = '300000'
 default['chef-dash']['frontend']['bundlegrid']['deployment']['enabled'] = 'true'
+default['chef-dash']['frontend']['bundlegrid']['deployment']['required'] = "{
+                field: 'stage1',
+                value: 3
+            }"
 default['chef-dash']['frontend']['bundlegrid']['triggerJenkinsJob']['enabled'] = 'true'
+default['chef-dash']['frontend']['bundlegrid']['triggerJenkinsJob']['required'] = "{
+                field: 'stage1',
+                value: 3
+            }"
 
 default['chef-dash']['frontend']['bundlegrid']['colwidth']['timestamp'] = '180'
 default['chef-dash']['frontend']['bundlegrid']['colwidth']['committer'] = '120'
@@ -160,6 +171,17 @@ default['chef-dash']['frontend']['deployment']['feature']['dbreset']['enabled'] 
 
 default['chef-dash']['frontend']['triggerJenkinsJob']['triggerUrl'] = "#{node['chef-dash']['jenkins']['url']}/job/DeploymentProd/buildWithParameters?token=Omi7foh4gu7d"
 default['chef-dash']['frontend']['triggerJenkinsJob']['showUrl'] = "#{node['chef-dash']['jenkins']['url']}/job/DeploymentProd/"
+default['chef-dash']['frontend']['triggerJenkinsJob']['title'] = 'Deployment to production'
+default['chef-dash']['frontend']['triggerJenkinsJob']['text'] = 'Do you really want to deploy to production?'
+default['chef-dash']['frontend']['triggerJenkinsJob']['inputFields'] = '[]'
+default['chef-dash']['frontend']['triggerJenkinsJob']['label']['cancel'] = 'Cancel'
+default['chef-dash']['frontend']['triggerJenkinsJob']['label']['run'] = 'Go go go !!'
+default['chef-dash']['frontend']['triggerJenkinsJob']['params']['bundle'] = "{
+                name: 'branch_bundle',
+                value: '{0}:{1}'
+            }"
+
+
 
 # Development
 default['chef-dash']['dev']['senchacmdVersion'] = "4.0.4.84"
