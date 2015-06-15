@@ -68,11 +68,13 @@ Dash.config = {
         reload: <%= node['chef-dash']['frontend']['bundlegrid']['reload'] %>, // 5 min
         deployment: {
             enabled: <%= node['chef-dash']['frontend']['bundlegrid']['deployment']['enabled'] %>,
-            required: <%= node['chef-dash']['frontend']['bundlegrid']['deployment']['required'] %>
+            required: <%= node['chef-dash']['frontend']['bundlegrid']['deployment']['required'] %>,
+            conditions: <%= node['chef-dash']['frontend']['bundlegrid']['deployment']['conditions'] %>
         },
         triggerJenkinsJob: {
             enabled: <%= node['chef-dash']['frontend']['bundlegrid']['triggerJenkinsJob']['enabled'] %>,
-            required: <%= node['chef-dash']['frontend']['bundlegrid']['triggerJenkinsJob']['required'] %>
+            required: <%= node['chef-dash']['frontend']['bundlegrid']['triggerJenkinsJob']['required'] %>,
+            conditions: <%= node['chef-dash']['frontend']['bundlegrid']['triggerJenkinsJob']['conditions'] %>
         },
         colwidth: {
             timestamp: <%= node['chef-dash']['frontend']['bundlegrid']['colwidth']['timestamp'] %>,

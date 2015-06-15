@@ -73,11 +73,13 @@ default['chef-dash']['frontend']['bundlegrid']['vcslink'] = '<a href="https://gi
 default['chef-dash']['frontend']['bundlegrid']['vcsrepolink'] = '<a href="https://github.com/pingworks/dash/" target="_blank" style="color: black">{0}</a>'
 default['chef-dash']['frontend']['bundlegrid']['reload'] = '300000'
 default['chef-dash']['frontend']['bundlegrid']['deployment']['enabled'] = 'true'
+default['chef-dash']['frontend']['bundlegrid']['deployment']['conditions'] = 'null'
 default['chef-dash']['frontend']['bundlegrid']['deployment']['required'] = "{
                 field: 'stage1',
                 value: 3
             }"
 default['chef-dash']['frontend']['bundlegrid']['triggerJenkinsJob']['enabled'] = 'true'
+default['chef-dash']['frontend']['bundlegrid']['triggerJenkinsJob']['conditions'] = 'null'
 default['chef-dash']['frontend']['bundlegrid']['triggerJenkinsJob']['required'] = "{
                 field: 'stage1',
                 value: 3
