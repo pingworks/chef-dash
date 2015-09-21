@@ -19,11 +19,21 @@
 
 apt_package 'apache2'
 
-template "/etc/apache2/conf.d/repo" do
+tplfile='/etc/apache2/conf.d/repo'
+if (node['chef-dash']['platform'] == 'ubuntu-lts') then
+  tplfile='/etc/apache2/conf-available/repo.conf'
+end
+template tplfile do
   source 'confd_repo_alias.erb'
   owner "root"
   group "root"
   mode '644'
+end
+
+if (node['chef-dash']['platform'] == 'ubuntu-lts') then
+  bash 'enable_apache_conf' do
+    code 'a2enconf repo'
+  end
 end
 
 bash 'apache2_restart' do

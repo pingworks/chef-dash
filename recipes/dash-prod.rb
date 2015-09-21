@@ -31,10 +31,28 @@ end
 apt_package 'libapache2-mod-php5'
 apt_package 'php5'
 apt_package 'php5-curl'
-apt_package 'zendframework'
 
-cookbook_file 'a2site_dash-prod' do
-  path '/etc/apache2/sites-available/dash-prod'
+if (node['chef-dash']['platform'] == 'ubuntu-lts') then
+  version='1.12.9+dfsg-2+deb8u3'
+  remote_file "#{Chef::Config[:file_cache_path]}/zendframework_#{version}_all.deb" do
+    source   "http://ftp.de.debian.org/debian/pool/main/z/zendframework/zendframework_#{version}_all.deb"
+    action :create_if_missing
+  end
+
+  dpkg_package "zendframework_#{version}_all.deb" do
+    source "#{Chef::Config[:file_cache_path]}/zendframework_#{version}_all.deb"
+    version version
+  end
+else
+  apt_package 'zendframework'
+end
+
+apache_conffile='a2site_dash-prod'
+if (node['chef-dash']['platform'] == 'ubuntu-lts') then
+  apache_conffile += '-24'
+end
+cookbook_file apache_conffile do
+  path '/etc/apache2/sites-available/dash-prod.conf'
 end
 
 bash 'enable_apache_site' do

@@ -1,0 +1,13 @@
+<VirtualHost *:80>
+  ServerName dash
+
+  DocumentRoot /opt/dash/public
+
+  SetEnv APPLICATION_ENV "production"
+
+  <Directory /opt/dash/public>
+  AllowOverride All
+  Require all granted
+  </Directory>
+
+</VirtualHost>
