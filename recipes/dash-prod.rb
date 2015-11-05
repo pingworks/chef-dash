@@ -75,10 +75,12 @@ include_recipe 'chef-dash::dash-debian-repo'
 
 package 'dash-backend' do
   version node['chef-dash']['package']['version']
+  options "-o Dpkg::Options::='--force-confnew'"
   action :install
 end
 package 'dash-frontend' do
   version node['chef-dash']['package']['version']
+  options "-o Dpkg::Options::='--force-confnew'"
   action :install
 end
 
