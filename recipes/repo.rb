@@ -19,6 +19,14 @@
 
 apt_package 'apache2'
 
+directory '/etc/apache2/conf.d' do
+  owner 'root'
+  group 'root'
+  mode 00755
+  recursive true
+  action :create
+end
+
 tplfile='/etc/apache2/conf.d/repo'
 if (node['chef-dash']['platform'] == 'ubuntu-lts') then
   tplfile='/etc/apache2/conf-available/repo.conf'
