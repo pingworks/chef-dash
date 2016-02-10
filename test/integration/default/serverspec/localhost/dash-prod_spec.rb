@@ -1,6 +1,6 @@
 require_relative '../spec_helper'
 
-describe process 'apache2' do
+describe service 'apache2' do
   it { should be_running }
 end
 

@@ -56,7 +56,7 @@ cookbook_file apache_conffile do
 end
 
 bash 'enable_apache_site' do
-  code 'a2ensite dash-prod'
+  code 'a2ensite dash-prod.conf'
 end
 
 bash 'enable_apache_dissite' do
