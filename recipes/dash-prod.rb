@@ -19,18 +19,14 @@
 
 include_recipe 'apt'
 
-%w(vim less git wget zip unzip).each do |p|
+%w(vim less git wget zip unzip libapache2-mod-php5 php5 php5-curl apache2-mpm-prefork).each do |p|
   package p do
-    action :install
+    action :upgrade
   end
 end
 
 #include_recipe 'apache2::default'
 #include_recipe 'php::default'
-
-apt_package 'libapache2-mod-php5'
-apt_package 'php5'
-apt_package 'php5-curl'
 
 if (node['chef-dash']['platform'] == 'ubuntu-lts') then
   version='1.12.9+dfsg-2+deb8u3'

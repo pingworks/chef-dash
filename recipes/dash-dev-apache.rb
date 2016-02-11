@@ -16,11 +16,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-apt_package 'libapache2-mod-php5'
-apt_package 'php5'
-apt_package 'php5-curl'
-apt_package 'zendframework'
+['libapache2-mod-php5','php5', 'php5-curl', 'zendframework', 'apache2-mpm-prefork'].each do |pkg|
+  apt_package pkg do
+    action :upgrade
+  end
+end
 
 cookbook_file 'a2site_dash-dev' do
   path '/etc/apache2/sites-available/dash-dev'

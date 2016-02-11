@@ -7,10 +7,10 @@ provisioner:
   require_chef_omnibus: false
 
 platforms:
-  - name: debian-7
+  - name: debian-8
     driver:
-        box: debianstandard_20150428_1258
-        box_url: http://vagrantimages.yrdci.fra.hybris.com/debianstandard_20150428_1258.box
+        box: debianstandard_20160202_1500
+        box_url: http://vagrantimages.yrdci.fra.hybris.com/debianstandard_20160202_1500.box
         network:
         - ["forwarded_port", { guest: 80, host: 8080 }]
 
