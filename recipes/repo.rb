@@ -28,7 +28,7 @@ directory '/etc/apache2/conf.d' do
 end
 
 tplfile='/etc/apache2/conf.d/repo'
-if (node['chef-dash']['platform'] == 'ubuntu-lts') then
+if (node['chef-dash']['platform'] == 'ubuntu-lts' or node['chef-dash']['platform'] == 'debian_jessie') then
   tplfile='/etc/apache2/conf-available/repo.conf'
 end
 template tplfile do
@@ -40,7 +40,7 @@ end
 
 bash 'enable_apache_conf' do
   code 'a2enconf repo'
-  only_if { node['chef-dash']['platform'] == 'ubuntu-lts' }
+  only_if { node['chef-dash']['platform'] == 'ubuntu-lts' or node['chef-dash']['platform'] == 'debian_jessie' }
 end
 
 service 'apache2' do
