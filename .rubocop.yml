@@ -1,0 +1,19 @@
+Metrics/LineLength:
+  Max: 180
+
+Style/Encoding:
+  Enabled: false
+
+Style/SingleSpaceBeforeFirstArg:
+  Enabled: false
+
+Style/UnneededPercentX:
+  Enabled: false
+
+Style/EndOfLine:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - Vagrantfile
+    

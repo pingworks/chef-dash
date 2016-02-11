@@ -20,3 +20,5 @@ gem 'kitchen-vagrant'
 gem 'chefspec'
 gem 'serverspec'
 
+gem 'foodcritic'
+gem 'rubocop'

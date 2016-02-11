@@ -103,6 +103,11 @@ cookbook_file 'selenium_conf' do
   mode '644'
 end
 
-execute 'start_headless-selenium' do
-  command '/etc/init.d/headless-selenium status || /etc/init.d/headless-selenium start'
+service 'headless-selenium' do
+  supports :status => true, :restart => true, :reload => true
+  action [:start, :enable]
 end
+
+# execute 'start_headless-selenium' do
+#   command '/etc/init.d/headless-selenium status || /etc/init.d/headless-selenium start'
+# end
