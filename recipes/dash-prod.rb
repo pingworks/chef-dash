@@ -44,7 +44,7 @@ else
 end
 
 apache_conffile='a2site_dash-prod'
-if (node['chef-dash']['platform'] == 'ubuntu-lts') then
+if (node['chef-dash']['platform'] == 'ubuntu-lts' or node['chef-dash']['platform'] == 'debian_jessie') then
   apache_conffile += '-24'
 end
 cookbook_file apache_conffile do
