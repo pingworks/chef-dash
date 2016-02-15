@@ -26,7 +26,7 @@ default['chef-dash']['datadir'] = '/data/envs'
 default['chef-dash']['contentdir'] = '/data/content'
 
 # Jenkins URL
-default['chef-dash']['jenkins']['url'] = "/jenkins"
+default['chef-dash']['jenkins']['url'] = '/jenkins'
 
 # Scripts
 default['chef-dash']['scripts']['impl'] = 'localfs'
@@ -184,17 +184,15 @@ default['chef-dash']['frontend']['triggerJenkinsJob']['params']['bundle'] = "{
                 value: '{0}:{1}'
             }"
 
-
-
 # Development
-default['chef-dash']['dev']['senchacmdVersion'] = "4.0.4.84"
-default['chef-dash']['dev']['phantomjsVersion'] = "1.9.0"
-default['chef-dash']['dev']['seleniumVersion'] = "2.44.0"
+default['chef-dash']['dev']['senchacmdVersion'] = '4.0.4.84'
+default['chef-dash']['dev']['phantomjsVersion'] = '1.9.0'
+default['chef-dash']['dev']['seleniumVersion'] = '2.44.0'
 default['chef-dash']['dev']['seleniumUrl'] = "http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-#{node['chef-dash']['dev']['seleniumVersion']}.jar"
-default['chef-dash']['dev']['srcBaseDir'] = "/opt/app"
-default['chef-dash']['dev']['srcDir'] = "dash"
-default['chef-dash']['dev']['srcRepoUrl'] = "https://github.com/pingworks/dash.git"
-default['chef-dash']['dev']['pgkRepoUrl'] = "http://repo.pingworks.net"
-default['chef-dash']['dev']['user'] = "vagrant"
-default['chef-dash']['dev']['group'] = "vagrant"
-default['chef-dash']['dev']['userHome'] = "/home/vagrant"
+default['chef-dash']['dev']['srcBaseDir'] = '/opt/app'
+default['chef-dash']['dev']['srcDir'] = 'dash'
+default['chef-dash']['dev']['srcRepoUrl'] = 'https://github.com/pingworks/dash.git'
+default['chef-dash']['dev']['pgkRepoUrl'] = 'http://repo.pingworks.net'
+default['chef-dash']['dev']['user'] = 'vagrant'
+default['chef-dash']['dev']['group'] = 'vagrant'
+default['chef-dash']['dev']['userHome'] = '/home/vagrant'
