@@ -11,16 +11,36 @@ platforms:
     driver:
         box: debianstandard_20160202_1500
         box_url: http://vagrantimages.yrdci.fra.hybris.com/debianstandard_20160202_1500.box
-        network:
-        - ["forwarded_port", { guest: 80, host: 8080 }]
+  - name: debian-7
+    driver:
+        box: debianstandard_20150428_1258
+        box_url: http://vagrantimages.yrdci.fra.hybris.com/debianstandard_20150428_1258.box
 
 suites:
-  - name: default
+  - name: default-8
     run_list:
       - recipe[chef-dash::dash-prod]
       - recipe[chef-dash::repo]
-    attributes: {}
+    attributes: { 'chef-dash': { 'platform' : 'debian_jessie' } }
+    driver:
+      network:
+        - [ 'forwarded_port', { guest: 80, host: 8080 } ]
+    includes:
+      - debian-8
+  - name: default-7
+    run_list:
+      - recipe[chef-dash::dash-prod]
+      - recipe[chef-dash::repo]
+    attributes: { 'chef-dash': { 'platform' : 'debian_wheezy' } }
+    driver:
+      network:
+        - [ 'forwarded_port', { guest: 80, host: 8080 } ]
+    includes:
+      - debian-7
   - name: dash-scripts
     run_list:
       - recipe[chef-dash::dash-scripts]
-    attributes: {}
+    attributes: { 'chef-dash': { 'platform' : 'debian_jessie' } }
+    driver:
+      network:
+        - [ 'forwarded_port', { guest: 80, host: 8080 } ]
