@@ -9,5 +9,3 @@ version '0.4.0'
 supports 'debian'
 
 depends 'apt'
-depends 'apache2', '~> 2.0.0'
-depends 'php', '~> 1.5.0'

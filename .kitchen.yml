@@ -40,7 +40,6 @@ suites:
   - name: dash-scripts
     run_list:
       - recipe[chef-dash::dash-scripts]
-    attributes: { 'chef-dash': { 'platform' : 'debian_jessie' } }
     driver:
       network:
         - [ 'forwarded_port', { guest: 80, host: 8080 } ]
