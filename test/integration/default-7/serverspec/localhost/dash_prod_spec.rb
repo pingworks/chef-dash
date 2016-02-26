@@ -46,5 +46,5 @@ end
 # Smoketest Frontend
 describe command("curl 'http://localhost/config.js'") do
   its(:exit_status) { should eq 0 }
-  its(:stdout) { should contain %r{Dash\.config = } }
+  its(:stdout) { should match %r{Dash\.config = } }
 end

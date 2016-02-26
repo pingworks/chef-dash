@@ -9,8 +9,8 @@ provisioner:
 platforms:
   - name: debian-8
     driver:
-        box: debianstandard_20160202_1500
-        box_url: http://vagrantimages.yrdci.fra.hybris.com/debianstandard_20160202_1500.box
+        box: debianstandard_8
+        box_url: http://vagrantimages.yrdci.fra.hybris.com/debianstandard_8.box
   - name: debian-7
     driver:
         box: debianstandard_20150428_1258
