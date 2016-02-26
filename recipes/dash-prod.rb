@@ -19,18 +19,14 @@
 
 include_recipe 'apt'
 
-%w(vim less git wget zip unzip).each do |p|
+%w(vim less git wget zip unzip libapache2-mod-php5 php5 php5-curl apache2-mpm-prefork).each do |p|
   package p do
-    action :install
+    action :upgrade
   end
 end
 
 #include_recipe 'apache2::default'
 #include_recipe 'php::default'
-
-apt_package 'libapache2-mod-php5'
-apt_package 'php5'
-apt_package 'php5-curl'
 
 if (node['chef-dash']['platform'] == 'ubuntu-lts') then
   version='1.12.9+dfsg-2+deb8u3'
@@ -48,7 +44,7 @@ else
 end
 
 apache_conffile='a2site_dash-prod'
-if (node['chef-dash']['platform'] == 'ubuntu-lts') then
+if (node['chef-dash']['platform'] == 'ubuntu-lts' or node['chef-dash']['platform'] == 'debian_jessie') then
   apache_conffile += '-24'
 end
 cookbook_file apache_conffile do
@@ -56,7 +52,7 @@ cookbook_file apache_conffile do
 end
 
 bash 'enable_apache_site' do
-  code 'a2ensite dash-prod'
+  code 'a2ensite dash-prod.conf'
 end
 
 bash 'enable_apache_dissite' do
