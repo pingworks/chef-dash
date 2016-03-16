@@ -33,7 +33,7 @@ apt_package 'php5'
 apt_package 'php5-curl'
 
 if (node['chef-dash']['platform'] == 'ubuntu-lts') then
-  version='1.12.9+dfsg-2+deb8u3'
+  version='1.12.9+dfsg-2+deb8u5'
   remote_file "#{Chef::Config[:file_cache_path]}/zendframework_#{version}_all.deb" do
     source   "http://ftp.de.debian.org/debian/pool/main/z/zendframework/zendframework_#{version}_all.deb"
     action :create_if_missing
