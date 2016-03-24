@@ -21,7 +21,7 @@ describe file('/etc/apache2/sites-available/dash-prod.conf') do
   its(:content) { should match %r{SetEnv APPLICATION_ENV "production"} }
 end
 
-describe file{'/etc/apache2/conf-available') do
+describe file('/etc/apache2/conf-available') do
 it { should exist }
 end
 
