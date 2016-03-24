@@ -19,6 +19,14 @@
 
 apt_package 'apache2'
 
+directory '/etc/apache2/conf-available' do
+  owner 'root'
+  group 'root'
+  mode 00755
+  recursive true
+  action :create
+end
+
 directory '/etc/apache2/conf.d' do
   owner 'root'
   group 'root'
