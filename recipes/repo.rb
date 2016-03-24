@@ -19,14 +19,6 @@
 
 apt_package 'apache2'
 
-directory '/etc/apache2/conf-available' do
-  owner 'root'
-  group 'root'
-  mode 00755
-  recursive true
-  action :create
-end
-
 directory '/etc/apache2/conf.d' do
   owner 'root'
   group 'root'
@@ -36,7 +28,7 @@ directory '/etc/apache2/conf.d' do
 end
 
 tplfile='/etc/apache2/conf.d/repo'
-if (node['chef-dash']['platform'] == 'ubuntu-lts') then
+if (node['chef-dash']['platform'] == 'ubuntu-lts' or node['chef-dash']['platform'] == 'debian_jessie') then
   tplfile='/etc/apache2/conf-available/repo.conf'
 end
 template tplfile do
@@ -46,14 +38,14 @@ template tplfile do
   mode '644'
 end
 
-if (node['chef-dash']['platform'] == 'ubuntu-lts') then
-  bash 'enable_apache_conf' do
-    code 'a2enconf repo'
-  end
+bash 'enable_apache_conf' do
+  code 'a2enconf repo'
+  only_if { node['chef-dash']['platform'] == 'ubuntu-lts' or node['chef-dash']['platform'] == 'debian_jessie' }
 end
 
-bash 'apache2_restart' do
-  code 'service apache2 restart'
+service 'apache2' do
+  supports :status => true, :restart => true, :reload => true
+  action :restart
 end
 
 user node['chef-dash']['repo']['owner'] do
