@@ -47,12 +47,14 @@ else
   apt_package 'zendframework'
 end
 
-apache_conffile='a2site_dash-prod'
+cookbook_file='a2site_dash-prod'
+apacheconf_file='dash-prod'
 if (node['chef-dash']['platform'] == 'ubuntu-lts') then
-  apache_conffile += '-24'
+  cookbook_file += '-24'
+  apacheconf_file += '.conf'
 end
-cookbook_file apache_conffile do
-  path '/etc/apache2/sites-available/dash-prod.conf'
+cookbook_file cookbook_file do
+  path '/etc/apache2/sites-available/' + apacheconf_file
 end
 
 bash 'enable_apache_site' do
