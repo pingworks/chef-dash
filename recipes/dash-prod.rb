@@ -34,7 +34,7 @@ apt_package 'php5-curl'
 
 case node['platform']
 when 'ubuntu'
-  version = '1.12.9+dfsg-2+deb8u5'
+  version = node['chef-dash']['zendframework']['version']
   remote_file "#{Chef::Config[:file_cache_path]}/zendframework_#{version}_all.deb" do
     source "http://ftp.de.debian.org/debian/pool/main/z/zendframework/zendframework_#{version}_all.deb"
     action :create_if_missing
