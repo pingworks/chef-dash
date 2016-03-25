@@ -18,17 +18,17 @@
 #
 
 # Jdeb for ant
-remote_file "/usr/share/ant/lib/jdeb-1.0.1.jar" do
-  source "http://repo1.maven.org/maven2/org/vafer/jdeb/1.0.1/jdeb-1.0.1.jar"
+remote_file '/usr/share/ant/lib/jdeb-1.0.1.jar' do
+  source 'http://repo1.maven.org/maven2/org/vafer/jdeb/1.0.1/jdeb-1.0.1.jar'
   action :create_if_missing
 end
 
 # Sencha Cmd
 remote_file "/var/tmp/SenchaCmd-#{node['chef-dash']['dev']['senchacmdVersion']}-linux-x64.run.zip" do
-  #source "http://cdn.sencha.com/cmd/#{node['chef-dash']['dev']['senchacmdVersion']}/SenchaCmd-#{node['chef-dash']['dev']['senchacmdVersion']}-linux-x64.run.zip"
+  # source "http://cdn.sencha.com/cmd/#{node['chef-dash']['dev']['senchacmdVersion']}/SenchaCmd-#{node['chef-dash']['dev']['senchacmdVersion']}-linux-x64.run.zip"
   source "#{node['chef-dash']['dev']['pgkRepoUrl']}/SenchaCmd-#{node['chef-dash']['dev']['senchacmdVersion']}-linux-x64.run.zip"
   action :create_if_missing
-  not_if do ::File.directory?("/opt/Sencha/Cmd/#{node['chef-dash']['dev']['senchacmdVersion']}") end
+  not_if { ::File.directory?("/opt/Sencha/Cmd/#{node['chef-dash']['dev']['senchacmdVersion']}") }
 end
 
 bash 'install_sencha_cmd' do
@@ -39,14 +39,14 @@ bash 'install_sencha_cmd' do
   ./SenchaCmd-#{node['chef-dash']['dev']['senchacmdVersion']}-linux-x64.run --mode unattended --prefix /opt
   chown -R #{node['chef-dash']['dev']['user']}:#{node['chef-dash']['dev']['group']} /opt/Sencha
   EOH
-  not_if do ::File.directory?("/opt/Sencha/Cmd/#{node['chef-dash']['dev']['senchacmdVersion']}") end
+  not_if { ::File.directory?("/opt/Sencha/Cmd/#{node['chef-dash']['dev']['senchacmdVersion']}") }
 end
 
 # PhantomJS
 remote_file "/var/tmp/phantomjs-#{node['chef-dash']['dev']['phantomjsVersion']}-linux-x86_64.tar.bz2" do
   source "https://phantomjs.googlecode.com/files/phantomjs-#{node['chef-dash']['dev']['phantomjsVersion']}-linux-x86_64.tar.bz2"
   action :create_if_missing
-  not_if do ::File.directory?("/opt/phantomjs-#{node['chef-dash']['dev']['phantomjsVersion']}-linux-x86_64") end
+  not_if { ::File.directory?("/opt/phantomjs-#{node['chef-dash']['dev']['phantomjsVersion']}-linux-x86_64") }
 end
 
 bash 'install_phantomjs' do
@@ -54,39 +54,39 @@ bash 'install_phantomjs' do
   code <<-EOH
   tar xfj /var/tmp/phantomjs-#{node['chef-dash']['dev']['phantomjsVersion']}-linux-x86_64.tar.bz2
   EOH
-  not_if do ::File.directory?("/opt/phantomjs-#{node['chef-dash']['dev']['phantomjsVersion']}-linux-x86_64") end
+  not_if { ::File.directory?("/opt/phantomjs-#{node['chef-dash']['dev']['phantomjsVersion']}-linux-x86_64") }
 end
 
 # Headless Selenium
-directory "/usr/lib/headless-selenium/profiles/firefox" do
+directory '/usr/lib/headless-selenium/profiles/firefox' do
   owner 'root'
   group 'root'
   mode '0755'
   recursive true
 end
 
-directory "/etc/headless-selenium" do
+directory '/etc/headless-selenium' do
   owner 'root'
   group 'root'
   mode '0755'
   recursive true
 end
 
-srcDir = "#{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcDir']}"
+srcdir = "#{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcdir']}"
 bash 'install_headless-selenium' do
   cwd '/opt'
   code <<-EOH
   git clone https://github.com/generalredneck/headless-selenium
-  ln -s #{srcDir}/tests/system/selenium/user-extensions.js /usr/lib/headless-selenium/
+  ln -s #{srcdir}/tests/system/selenium/user-extensions.js /usr/lib/headless-selenium/
   tar xvfz /opt/headless-selenium/selenium-profile.tar.gz -C /usr/lib/headless-selenium/profiles/firefox
   EOH
-  not_if do ::File.directory?("/opt/headless-selenium") end
+  not_if { ::File.directory?('/opt/headless-selenium') }
 end
 
 remote_file "/usr/lib/headless-selenium/selenium-server-standalone-#{node['chef-dash']['dev']['seleniumVersion']}.jar" do
   source node['chef-dash']['dev']['seleniumUrl']
   action :create_if_missing
-  not_if do ::File.directory?("/usr/lib/headless-selenium/selenium-server-standalone-#{node['chef-dash']['dev']['seleniumVersion']}.jar") end
+  not_if { ::File.directory?("/usr/lib/headless-selenium/selenium-server-standalone-#{node['chef-dash']['dev']['seleniumVersion']}.jar") }
 end
 
 cookbook_file 'init_d_headless_selenium' do

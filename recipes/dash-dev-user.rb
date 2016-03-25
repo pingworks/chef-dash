@@ -34,7 +34,7 @@ directory node['chef-dash']['dev']['userHome'] do
   recursive true
 end
 
-Dir[ "/etc/skel/.*" ].each do |path|
+Dir['/etc/skel/.*'].each do |path|
   file "#{node['chef-dash']['dev']['userHome']}/#{Pathname.new(path).basename}" do
     owner node['chef-dash']['dev']['user']
     group node['chef-dash']['dev']['group']

@@ -25,15 +25,15 @@ bash 'prepare_sencha_cmd_for_user' do
 end
 
 # Initial Build
-srcDir = "#{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcDir']}"
+srcdir = "#{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcdir']}"
 bash 'ant_build' do
   code <<-EOH
   export PATH=/opt/Sencha/Cmd/#{node['chef-dash']['dev']['senchacmdVersion']}:$PATH
   echo "PATH=$PATH"
-  cd #{srcDir}/frontend
+  cd #{srcdir}/frontend
   ant build
   EOH
   user node['chef-dash']['dev']['user']
   group node['chef-dash']['dev']['group']
-  not_if do ::File.directory?("#{srcDir}/frontend/build") end
+  not_if { ::File.directory?("#{srcdir}/frontend/build") }
 end

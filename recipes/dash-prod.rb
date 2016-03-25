@@ -25,17 +25,17 @@ include_recipe 'apt'
   end
 end
 
-#include_recipe 'apache2::default'
-#include_recipe 'php::default'
+# include_recipe 'apache2::default'
+# include_recipe 'php::default'
 
 apt_package 'libapache2-mod-php5'
 apt_package 'php5'
 apt_package 'php5-curl'
 
-if (node['chef-dash']['platform'] == 'ubuntu-lts') then
-  version='1.12.9+dfsg-2+deb8u5'
+if (node['chef-dash']['platform'] == 'ubuntu-lts')
+  version = '1.12.9+dfsg-2+deb8u5'
   remote_file "#{Chef::Config[:file_cache_path]}/zendframework_#{version}_all.deb" do
-    source   "http://ftp.de.debian.org/debian/pool/main/z/zendframework/zendframework_#{version}_all.deb"
+    source "http://ftp.de.debian.org/debian/pool/main/z/zendframework/zendframework_#{version}_all.deb"
     action :create_if_missing
   end
 
@@ -47,9 +47,9 @@ else
   apt_package 'zendframework'
 end
 
-cookbook_file='a2site_dash-prod'
-apacheconf_file='dash-prod'
-if (node['chef-dash']['platform'] == 'ubuntu-lts') then
+cookbook_file = 'a2site_dash-prod'
+apacheconf_file = 'dash-prod'
+if (node['chef-dash']['platform'] == 'ubuntu-lts')
   cookbook_file += '-24'
   apacheconf_file += '.conf'
 end
@@ -86,16 +86,16 @@ package 'dash-frontend' do
   action :install
 end
 
-template "/etc/dash-backend/application.ini" do
+template '/etc/dash-backend/application.ini' do
   source 'application_ini.erb'
-  owner "root"
-  group "root"
+  owner 'root'
+  group 'root'
   mode '644'
 end
 
-template "/etc/dash-frontend/config.js" do
+template '/etc/dash-frontend/config.js' do
   source 'config_js.erb'
-  owner "root"
-  group "root"
+  owner 'root'
+  group 'root'
   mode '644'
 end

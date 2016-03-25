@@ -18,7 +18,7 @@
 #
 
 # Dashboard src
-srcDir = "#{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcDir']}"
+srcdir = "#{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcdir']}"
 
 directory node['chef-dash']['dev']['srcBaseDir'] do
   owner node['chef-dash']['dev']['user']
@@ -29,9 +29,9 @@ end
 
 bash 'clone_src_repo' do
   code <<-EOH
-  rm -rf #{srcDir}
-  git clone #{node['chef-dash']['dev']['srcRepoUrl']} #{srcDir}
-  chown -R #{node['chef-dash']['dev']['user']}:#{node['chef-dash']['dev']['group']} #{srcDir}
+  rm -rf #{srcdir}
+  git clone #{node['chef-dash']['dev']['srcRepoUrl']} #{srcdir}
+  chown -R #{node['chef-dash']['dev']['user']}:#{node['chef-dash']['dev']['group']} #{srcdir}
   EOH
-  not_if do ::File.exists?("#{srcDir}/.git") end
+  not_if { ::File.exist?("#{srcdir}/.git") }
 end

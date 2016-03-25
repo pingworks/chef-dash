@@ -27,18 +27,18 @@ directory '/etc/apache2/conf.d' do
   action :create
 end
 
-tplfile='/etc/apache2/conf.d/repo'
-if (node['chef-dash']['platform'] == 'ubuntu-lts') then
-  tplfile='/etc/apache2/conf-available/repo.conf'
+tplfile = '/etc/apache2/conf.d/repo'
+if (node['chef-dash']['platform'] == 'ubuntu-lts')
+  tplfile = '/etc/apache2/conf-available/repo.conf'
 end
 template tplfile do
   source 'confd_repo_alias.erb'
-  owner "root"
-  group "root"
+  owner 'root'
+  group 'root'
   mode '644'
 end
 
-if (node['chef-dash']['platform'] == 'ubuntu-lts') then
+if (node['chef-dash']['platform'] == 'ubuntu-lts')
   bash 'enable_apache_conf' do
     code 'a2enconf repo'
   end

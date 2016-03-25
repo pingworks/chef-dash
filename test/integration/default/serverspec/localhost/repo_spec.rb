@@ -22,5 +22,5 @@ end
 # Smoketest Repo
 describe command "curl 'http://localhost/repo/'" do
   its(:exit_status) { should eq 0 }
-  its(:stdout) { should match /Index of \/repo/ }
+  its(:stdout) { should match 'Index of \/repo' }
 end

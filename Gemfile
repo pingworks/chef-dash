@@ -19,4 +19,3 @@ gem 'kitchen-vagrant'
 
 gem 'chefspec'
 gem 'serverspec'
-

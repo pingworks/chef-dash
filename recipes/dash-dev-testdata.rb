@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
-remote_file "/var/tmp/full-bundle_LATEST.tar.gz" do
-  source "https://dash.pingworks.net/repo/master/full-bundle_LATEST.tar.gz"
+remote_file '/var/tmp/full-bundle_LATEST.tar.gz' do
+  source 'https://dash.pingworks.net/repo/master/full-bundle_LATEST.tar.gz'
   action :create_if_missing
 end
 

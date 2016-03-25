@@ -17,16 +17,16 @@
 # limitations under the License.
 #
 
-template "/etc/dash-scripts/repo.conf" do
+template '/etc/dash-scripts/repo.conf' do
   source 'repo_conf.erb'
-  owner "root"
-  group "root"
+  owner 'root'
+  group 'root'
   mode '644'
 end
 
-template "/etc/dash-scripts/bundlename.sh" do
+template '/etc/dash-scripts/bundlename.sh' do
   source 'bundlename_sh.erb'
-  owner "root"
-  group "root"
+  owner 'root'
+  group 'root'
   mode '644'
 end

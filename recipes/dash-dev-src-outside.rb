@@ -18,14 +18,13 @@
 #
 
 # Dashboard src
-srcDir = "#{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcDir']}"
-
-bash "link dash source" do
-  user "root"
+bash 'link dash source' do
+  user 'root'
   code <<-EOL
-  [ -d #{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcDir']}.orig ] && rm -Rf #{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcDir']}.orig
-  mv #{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcDir']} #{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcDir']}.orig
-  ln -s /vagrant_app_dash #{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcDir']}
+  [ -d #{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcdir']}.orig ] \
+    && rm -Rf #{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcdir']}.orig
+  mv #{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcdir']} #{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcdir']}.orig
+  ln -s /vagrant_app_dash #{node['chef-dash']['dev']['srcBaseDir']}/#{node['chef-dash']['dev']['srcdir']}
   EOL
-  only_if "[ -f /vagrant_app_dash/README ]"
+  only_if '[ -f /vagrant_app_dash/README ]'
 end

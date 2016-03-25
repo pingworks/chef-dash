@@ -26,7 +26,7 @@ default['chef-dash']['datadir'] = '/data/envs'
 default['chef-dash']['contentdir'] = '/data/content'
 
 # Jenkins URL
-default['chef-dash']['jenkins']['url'] = "/jenkins"
+default['chef-dash']['jenkins']['url'] = '/jenkins'
 
 # Scripts
 default['chef-dash']['scripts']['impl'] = 'localfs'
@@ -162,7 +162,8 @@ default['chef-dash']['frontend']['bundlegrid']['flex']['deployment'] = '1'
 default['chef-dash']['frontend']['bundlegrid']['flex']['triggerJenkinsJob'] = '1'
 default['chef-dash']['frontend']['bundlegrid']['flex']['comment'] = '0'
 
-default['chef-dash']['frontend']['jobresult']['text'] = "<div style=\"white-space: nowrap;\"><img src=\"{6}\" alt=\"{2}\" class=\"{7}\">&nbsp;<a href=\"#{node['chef-dash']['jenkins']['url']}/{1}\" target=\"_blank\">{0}</a>: Tests: {3}, skipped: {4}, failed: {5}</div>"
+default['chef-dash']['frontend']['jobresult']['text'] = "<div style=\"white-space: nowrap;\"><img src=\"{6}\" alt=\"{2}\" class=\"{7}\">&nbsp;" \
+  "<a href=\"#{node['chef-dash']['jenkins']['url']}/{1}\" target=\"_blank\">{0}</a>: Tests: {3}, skipped: {4}, failed: {5}</div>"
 default['chef-dash']['frontend']['jobresult']['title'] = '{1} stage Jobs for Bundle {2}'
 
 default['chef-dash']['frontend']['build']['triggerRestartUrl'] = "#{node['chef-dash']['jenkins']['url']}/job/Deployment/buildWithParameters?token=Aezei3oph9xu"
@@ -184,17 +185,15 @@ default['chef-dash']['frontend']['triggerJenkinsJob']['params']['bundle'] = "{
                 value: '{0}:{1}'
             }"
 
-
-
 # Development
-default['chef-dash']['dev']['senchacmdVersion'] = "4.0.4.84"
-default['chef-dash']['dev']['phantomjsVersion'] = "1.9.0"
-default['chef-dash']['dev']['seleniumVersion'] = "2.44.0"
+default['chef-dash']['dev']['senchacmdVersion'] = '4.0.4.84'
+default['chef-dash']['dev']['phantomjsVersion'] = '1.9.0'
+default['chef-dash']['dev']['seleniumVersion'] = '2.44.0'
 default['chef-dash']['dev']['seleniumUrl'] = "http://selenium-release.storage.googleapis.com/2.44/selenium-server-standalone-#{node['chef-dash']['dev']['seleniumVersion']}.jar"
-default['chef-dash']['dev']['srcBaseDir'] = "/opt/app"
-default['chef-dash']['dev']['srcDir'] = "dash"
-default['chef-dash']['dev']['srcRepoUrl'] = "https://github.com/pingworks/dash.git"
-default['chef-dash']['dev']['pgkRepoUrl'] = "http://repo.pingworks.net"
-default['chef-dash']['dev']['user'] = "vagrant"
-default['chef-dash']['dev']['group'] = "vagrant"
-default['chef-dash']['dev']['userHome'] = "/home/vagrant"
+default['chef-dash']['dev']['srcBaseDir'] = '/opt/app'
+default['chef-dash']['dev']['srcDir'] = 'dash'
+default['chef-dash']['dev']['srcRepoUrl'] = 'https://github.com/pingworks/dash.git'
+default['chef-dash']['dev']['pgkRepoUrl'] = 'http://repo.pingworks.net'
+default['chef-dash']['dev']['user'] = 'vagrant'
+default['chef-dash']['dev']['group'] = 'vagrant'
+default['chef-dash']['dev']['userHome'] = '/home/vagrant'
