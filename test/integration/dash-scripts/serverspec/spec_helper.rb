@@ -1,7 +1,7 @@
 require 'serverspec'
 require 'net/ssh'
 
-set :backend, :ssh
+set :backend, :exec
 
 if ENV['ASK_SUDO_PASSWORD']
   begin
