@@ -4,7 +4,7 @@ describe process 'apache2' do
   it { should be_running }
 end
 
-describe package 'apache2-mpm-prefork' do
+describe package 'apache2' do
   it { should be_installed }
 end
 
@@ -16,7 +16,11 @@ describe package('libapache2-mod-php5') do
   it { should be_installed }
 end
 
-describe file '/etc/apache2/sites-available/dash-prod' do
+apacheconf_file = 'dash-prod.conf'
+if os[:family] == 'debian' && os[:release].match('^7')
+  apacheconf_file = 'dash-prod'
+end
+describe file '/etc/apache2/sites-available/' + apacheconf_file do
   its(:content) { should match 'DocumentRoot \/opt\/dash\/public' }
   its(:content) { should match 'SetEnv APPLICATION_ENV "production"' }
 end

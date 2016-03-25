@@ -28,7 +28,7 @@ directory '/etc/apache2/conf.d' do
 end
 
 tplfile = '/etc/apache2/conf.d/repo'
-if (node['chef-dash']['platform'] == 'ubuntu-lts')
+unless node['platform'] == 'debian' && node['platform_version'].match('^7')
   tplfile = '/etc/apache2/conf-available/repo.conf'
 end
 template tplfile do
@@ -38,7 +38,7 @@ template tplfile do
   mode '644'
 end
 
-if (node['chef-dash']['platform'] == 'ubuntu-lts')
+unless node['platform'] == 'debian' && node['platform_version'].match('^7')
   bash 'enable_apache_conf' do
     code 'a2enconf repo'
   end

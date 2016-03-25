@@ -32,7 +32,8 @@ apt_package 'libapache2-mod-php5'
 apt_package 'php5'
 apt_package 'php5-curl'
 
-if (node['chef-dash']['platform'] == 'ubuntu-lts')
+case node['platform']
+when 'ubuntu'
   version = '1.12.9+dfsg-2+deb8u5'
   remote_file "#{Chef::Config[:file_cache_path]}/zendframework_#{version}_all.deb" do
     source "http://ftp.de.debian.org/debian/pool/main/z/zendframework/zendframework_#{version}_all.deb"
@@ -43,13 +44,13 @@ if (node['chef-dash']['platform'] == 'ubuntu-lts')
     source "#{Chef::Config[:file_cache_path]}/zendframework_#{version}_all.deb"
     version version
   end
-else
+when 'debian'
   apt_package 'zendframework'
 end
 
 cookbook_file = 'a2site_dash-prod'
 apacheconf_file = 'dash-prod'
-if (node['chef-dash']['platform'] == 'ubuntu-lts')
+unless node['platform'] == 'debian' && node['platform_version'].match('^7')
   cookbook_file += '-24'
   apacheconf_file += '.conf'
 end

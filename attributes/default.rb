@@ -1,4 +1,3 @@
-default['chef-dash']['platform'] = 'debian-stable'
 default['chef-dash']['package']['version'] = '435+gitca47358'
 default['chef-dash']['package']['install_method'] = 'apt'
 

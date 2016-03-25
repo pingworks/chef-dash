@@ -1,5 +1,5 @@
 Alias /repo <%= node['chef-dash']['repodir'] %>
-<% if node['chef-dash']['platform'] == 'ubuntu-lts' -%>
+<% unless node['platform'] == 'debian' && node['platform_version'].match('^7') -%>
 <Directory <%= node['chef-dash']['repodir'] %>>
   Require all granted
   Options Indexes FollowSymLinks
