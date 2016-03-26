@@ -4,7 +4,7 @@ maintainer_email 'info@pingworks.de'
 license 'Apache License, Version 2.0'
 description 'Installs/Configures chef-dash'
 long_description 'Installs/Configures chef-dash'
-version '0.3.10'
+version '0.5.0'
 
 supports 'debian'
 
