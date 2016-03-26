@@ -30,7 +30,7 @@ describe file('/etc/apt/sources.list.d/pingworks-dashboard.list') do
 end
 
 describe file('/etc/apt/sources.list.d/pingworks-dashboard.list') do
-  its(:content) { should match '^deb\s*https://dash.pingworks.net/debian' }
+  its(:content) { should match '^deb\s*"?https://dash.pingworks.net/debian"?' }
 end
 
 describe package('dash-backend') do
