@@ -4,15 +4,17 @@ driver:
 
 provisioner:
   name: chef_zero
-  require_chef_omnibus: false
+  require_chef_omnibus: true
 
 platforms:
   - name: debian-7.7
     driver:
         box: opscode_debian-7.7_chef-11.16.4-1
         box_url: http://vagrant.pingworks.net/opscode_debian-7.7_chef-11.16.4-1.box
-        network:
-        - ["forwarded_port", { guest: 80, host: 8080 }]
+  - name: debian-8
+    driver:
+        box: debian/jessie64
+        box_url: https://atlas.hashicorp.com/debian/boxes/jessie64/versions/8.3.0/providers/virtualbox.box
 
 suites:
   - name: default
@@ -20,6 +22,8 @@ suites:
       - recipe[chef-dash::dash-prod]
       - recipe[chef-dash::repo]
     attributes: {}
+    network:
+    - ["forwarded_port", { guest: 80, host: 8080 }]
   - name: dash-scripts
     run_list:
       - recipe[chef-dash::dash-scripts]
