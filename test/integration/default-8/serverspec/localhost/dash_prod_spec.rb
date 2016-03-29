@@ -16,10 +16,6 @@ describe package('libapache2-mod-php5') do
   it { should be_installed }
 end
 
-describe file('/etc/apache2/conf-available') do
-it { should exist }
-end
-
 describe file('/etc/apache2/sites-available/dash-prod.conf') do
   its(:content) { should match %r{DocumentRoot \/opt\/dash\/public} }
   its(:content) { should match %r{SetEnv APPLICATION_ENV "production"} }

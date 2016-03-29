@@ -21,10 +21,6 @@ describe file('/etc/apache2/sites-available/dash-prod.conf') do
   its(:content) { should match %r{SetEnv APPLICATION_ENV "production"} }
 end
 
-describe file('/etc/apache2/conf-available') do
-it { should exist }
-end
-
 describe file('/etc/apt/sources.list.d/pingworks-dashboard.list') do
   it { should be_file }
 end

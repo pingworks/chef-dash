@@ -27,14 +27,6 @@ directory '/etc/apache2/conf.d' do
   action :create
 end
 
-directory '/etc/apache2/conf-available' do
-  owner 'root'
-  group 'root'
-  mode 00755
-  recursive true
-  action :create
-end
-
 tplfile='/etc/apache2/conf.d/repo'
 if (node['chef-dash']['platform'] == 'ubuntu-lts' or node['chef-dash']['platform'] == 'debian_jessie') then
   tplfile='/etc/apache2/conf-available/repo.conf'
