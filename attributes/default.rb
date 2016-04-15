@@ -26,7 +26,7 @@ default['chef-dash']['debrepo']['keyserver'] = 'keyserver.ubuntu.com'
 default['chef-dash']['debrepo']['key'] = 'C18F5E6F'
 
 # Debian Corporate Packages Repo
-default['chef-dash']['corprepo']['url'] = 'http://depot.fra.hybris.com/pingworks/dash/pool/main/d'
+default['chef-dash']['corprepo']['url'] = 'https://dash.pingworks.net/debian/pool/main/d/'
 # Debian Scripts Package Repo
 default['dpkg']['scripts-url'] = "#{node['chef-dash']['corprepo']['url']}/dash-scripts"
 
