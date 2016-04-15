@@ -42,4 +42,4 @@ suites:
       - recipe[chef-dash::dash-scripts]
     driver:
       network:
-        - [ 'forwarded_port', { guest: 80, host: 8080 } ]
+        - [ 'forwarded_port', { guest: 80, host: 8081 } ]
