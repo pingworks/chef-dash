@@ -6,7 +6,7 @@ default['chef-dash']['pipelinestages'] = 3
 
 # Set a default for using a corporate repo for packages or not
 # Defaults to false 
-default['chef-dash']['use-corp-repo'] = 'true'
+default['chef-dash']['use-corp-repo'] = 'false'
 
 # If attribute use-corp-repo is true then install using dpkg
 # else install using apt
