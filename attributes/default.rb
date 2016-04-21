@@ -5,6 +5,32 @@ default['chef-dash']['pipelinestages'] = 3
 
 default['chef-dash']['zendframework']['version'] = '1.12.9+dfsg-2+deb8u5'
 
+# default['chef-dash']['package']['install_method'] = 'dpkg'
+
+# Set a default for using a corporate repo for packages or not
+# Defaults to false 
+default['chef-dash']['use-corp-repo'] = 'true'
+
+# If attribute use-corp-repo is true then install using dpkg
+# else install using apt
+case node['chef-dash']['use-corp-repo']
+when 'true'
+  node.default['package']['install_method'] = 'dpkg'
+when 'false'
+  node.default['package']['install_method'] = 'apt'
+end
+
+# Debian Corporate Packages Repo
+default['chef-dash']['corprepo']['url'] = 'http://depot.fra.hybris.com/pingworks/dash/pool/main/d'
+# Debian Scripts Package Repo
+default['dpkg']['scripts-url'] = "#{node['chef-dash']['corprepo']['url']}/dash-scripts"
+
+# Debian Dashboard Backend Repo
+default['dpkg']['backend-url'] = "#{node['chef-dash']['corprepo']['url']}/dash-backend"
+
+# Debian Dashboard Frontend Repo
+default['dpkg']['frontend-url'] = "#{node['chef-dash']['corprepo']['url']}/dash-frontend"
+
 # Debian Package Repo
 default['chef-dash']['debrepo']['url'] = 'https://dash.pingworks.net/debian'
 default['chef-dash']['debrepo']['dist'] = 'squeeze'
