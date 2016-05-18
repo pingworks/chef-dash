@@ -4,7 +4,7 @@ package 'apt-transport-https'
 # to the corporate repo, and include the add-apt-key recipe
 # if not, use the pingworks deb repo and ubuntu keyserver
 
-if node['chef-dash']['use-corp-repo'].include? "true"
+if node['chef-dash']['use-corp-repo']
   include_recipe 'chef-dash::add-apt-key'
 else
   apt_repository 'pingworks-dashboard' do
