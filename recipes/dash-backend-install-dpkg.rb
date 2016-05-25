@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: chef-dash
-# Recipe:: dash-scripts
+# Recipe:: dash-backend-install-dpkg
 #
-# Copyright 2014 pingworks - Alexander Birk und Christoph Lukas
+# Copyright 2016 - Mini Shridhar (mini.shridhar@hybris.com)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,5 +17,13 @@
 # limitations under the License.
 #
 
-include_recipe "chef-dash::dash-scripts-install-#{node['package']['install_method']}"
-include_recipe 'chef-dash::dash-scripts-install-tpl'
+remote_file "#{Chef::Config[:file_cache_path]}/dash-backend_#{node['chef-dash']['package']['version']}_all.deb" do
+  source "#{node['dpkg']['backend-url']}/dash-backend_#{node['chef-dash']['package']['version']}_all.deb"
+end
+
+dpkg_package 'dash-backend' do
+  source "#{Chef::Config[:file_cache_path]}/dash-backend_#{node['chef-dash']['package']['version']}_all.deb"
+  action :install
+end
+
+include_recipe 'chef-dash::dash-backend-install-tpl'

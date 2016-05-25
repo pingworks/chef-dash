@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: chef-dash
-# Recipe:: dash-scripts
+# Recipe:: dash-frontend
 #
-# Copyright 2014 pingworks - Alexander Birk und Christoph Lukas
+# Copyright 2016 - Mini Shridhar (mini.shridahr@hybris.com)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,5 +17,5 @@
 # limitations under the License.
 #
 
-include_recipe "chef-dash::dash-scripts-install-#{node['package']['install_method']}"
-include_recipe 'chef-dash::dash-scripts-install-tpl'
+include_recipe "chef-dash::dash-frontend-install-#{node['package']['install_method']}"
+include_recipe 'chef-dash::dash-frontend-install-tpl'
