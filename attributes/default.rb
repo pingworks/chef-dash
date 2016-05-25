@@ -19,9 +19,9 @@ default['chef-dash']['use-corp-repo'] = false
 # If attribute use-corp-repo is true then install using dpkg
 # else install using apt
 case node['chef-dash']['use-corp-repo']
-when 'true'
+when true
   node.default['package']['install_method'] = 'dpkg'
-when 'false'
+when false
   node.default['package']['install_method'] = 'apt'
 end
 
