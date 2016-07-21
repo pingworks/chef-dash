@@ -64,6 +64,7 @@ end
 
 bash 'enable_apache_dissite' do
   code 'a2dissite 000-default'
+  only_if 'ls -1 /etc/apache2/sites-available/ | grep 000-default'
 end
 
 bash 'enable_apache_enmod' do
