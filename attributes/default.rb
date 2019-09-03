@@ -3,7 +3,8 @@ default['chef-dash']['package']['install_method'] = 'apt'
 
 default['chef-dash']['pipelinestages'] = 3
 
-default['chef-dash']['zendframework']['version'] = '1.12.9+dfsg-2+deb8u6'
+# default['chef-dash']['zendframework']['version'] = '1.12.9+dfsg-2+deb8u6'
+# default['chef-dash']['zendframework']['version'] = '1.11.11-0ubuntu3'
 
 # Debian Package Repo
 default['chef-dash']['debrepo']['url'] = 'https://dash.pingworks.net/debian'

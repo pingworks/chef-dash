@@ -28,25 +28,10 @@ end
 # include_recipe 'apache2::default'
 # include_recipe 'php::default'
 
-apt_package 'libapache2-mod-php5'
-apt_package 'php5'
-apt_package 'php5-curl'
-
-case node['platform']
-when 'ubuntu'
-  version = node['chef-dash']['zendframework']['version']
-  remote_file "#{Chef::Config[:file_cache_path]}/zendframework_#{version}_all.deb" do
-    source "http://ftp.de.debian.org/debian/pool/main/z/zendframework/zendframework_#{version}_all.deb"
-    action :create_if_missing
-  end
-
-  dpkg_package "zendframework_#{version}_all.deb" do
-    source "#{Chef::Config[:file_cache_path]}/zendframework_#{version}_all.deb"
-    version version
-  end
-when 'debian'
-  apt_package 'zendframework'
-end
+apt_package 'libapache2-mod-php'
+apt_package 'php'
+apt_package 'php-curl'
+apt_package 'zend-framework'
 
 cookbook_file = 'a2site_dash-prod'
 apacheconf_file = 'dash-prod'
