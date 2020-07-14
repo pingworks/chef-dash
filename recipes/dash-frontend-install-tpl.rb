@@ -1,8 +1,8 @@
 #
 # Cookbook Name:: chef-dash
-# Recipe:: dash-scripts
+# Recipe:: dash-scripts-install-tpl
 #
-# Copyright 2014 pingworks - Alexander Birk und Christoph Lukas
+# Copyright 2016 - Mini Shridhar (mini.shridhar@hybris.com)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,5 +17,9 @@
 # limitations under the License.
 #
 
-include_recipe "chef-dash::dash-scripts-install-#{node['package']['install_method']}"
-include_recipe 'chef-dash::dash-scripts-install-tpl'
+template "/etc/dash-frontend/config.js" do
+  source 'config_js.erb'
+  owner "root"
+  group "root"
+  mode '644'
+end

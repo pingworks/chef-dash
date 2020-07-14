@@ -62,27 +62,5 @@ end
 
 include_recipe 'chef-dash::dash-debian-repo'
 
-package 'dash-backend' do
-  version node['chef-dash']['package']['version']
-  options "-o Dpkg::Options::='--force-confnew'"
-  action :install
-end
-package 'dash-frontend' do
-  version node['chef-dash']['package']['version']
-  options "-o Dpkg::Options::='--force-confnew'"
-  action :install
-end
-
-template '/etc/dash-backend/application.ini' do
-  source 'application_ini.erb'
-  owner 'root'
-  group 'root'
-  mode '644'
-end
-
-template '/etc/dash-frontend/config.js' do
-  source 'config_js.erb'
-  owner 'root'
-  group 'root'
-  mode '644'
-end
+include_recipe 'chef-dash::dash-backend'
+include_recipe 'chef-dash::dash-frontend'

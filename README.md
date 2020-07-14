@@ -46,7 +46,19 @@ http://localhost:8080/
 
 and you have a running dashboard.
 
+## Attributes
 
+Set a default for using a corporate repo for packages or not.
+Defaults to false.
+If this attribute is set to true, we must provide as a cookbook_file the publickey of the
+corporate package repo,in a **WRAPPER** cookbook. This cookbook_file is then provisioned by the add-apt-key recipe.
+The add-apt-key recipe is called based on this attribute Boolean value being true.
+If this attribute is set to the default value of false, the apt_repository resource
+is invoked to get the key for the Pingworks debian repo.
+
+```
+default['chef-dash']['use-corp-repo'] = false
+```
 
 ## License and Authors
 Licensed under
