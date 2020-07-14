@@ -3,6 +3,7 @@
 ## Supported Platforms
 
 Debian 7.x (wheezy)
+Debian 8 (jessie)
 
 ## Attributes
 
@@ -54,4 +55,3 @@ Apache v2.0 License
 
 Author:: Christoph Lukas (<lukas@pingworks.de>)
 Author:: Alexander Birk (<birk@pingworks.de>)
-

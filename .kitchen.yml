@@ -9,8 +9,8 @@ provisioner:
 platforms:
   - name: debian-7.7
     driver:
-        box: opscode_debian-7.7_chef-11.16.4-1
-        box_url: http://vagrant.pingworks.net/opscode_debian-7.7_chef-11.16.4-1.box
+        box: debianstandard_20150428_1258
+        box_url: http://vagrantimages.yrdci.fra.hybris.com/debianstandard_20150428_1258.box
   - name: debian-8
     driver:
         box: debian/jessie64
